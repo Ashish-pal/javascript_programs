@@ -23,10 +23,30 @@ console.log(getKey(maxRollValue) + " maximum rolled value for " + maxRollValue +
 
 
 
-let birthMonthMap = new Map([[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [10, 0], [11, 0], [12, 0]]);
-for (let i = 0; i < 50; i++) {
-    let birthGenerator = Math.floor(Math.random() * 12) + 1;
-    let count = birthMonthMap.get(birthGenerator);
-    birthMonthMap.set(birthGenerator, ++count);
+//let birthMonthMap = new Map([[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [10, 0], [11, 0], [12, 0]]);
+//for (let i = 0; i < 50; i++) {
+ //   let birthGenerator = Math.floor(Math.random() * 12) + 1;
+ //   let count = birthMonthMap.get(birthGenerator);
+//    birthMonthMap.set(birthGenerator, ++count);
+//}
+//console.log(birthMonthMap);
+
+
+//let map = new Map();
+for (let person = 1; person <= 50; person++) 
+{
+    let birthMonth = Math.floor(Math.random() * 11);
+    birthMonth++;
+    if (map.has(birthMonth)) 
+    {
+        map.get(birthMonth).push(person);
+    }
+    else 
+    {
+        map.set(birthMonth, [person]);
+    }
 }
-console.log(birthMonthMap);
+for (let [key, value] of map) 
+{
+    console.log('People with birthday in month ' + key + ' : ' + String(value));
+}
